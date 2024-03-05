@@ -6,15 +6,10 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     category_name = models.CharField(max_length=200)
-
-
-    def __str__(self):return self.category_name
+    def __str__(self):
+        return self.category_name
     
-
-
-
-class Post(models.Model):
-    
+class Post(models.Model):  
     created_at = models.DateTimeField(auto_now_add = True)
     edited_at = models.DateTimeField(auto_now = True)
     categroy = models.ForeignKey(Category,on_delete=models.CASCADE,blank=True,default=None) 
@@ -23,7 +18,6 @@ class Post(models.Model):
     editor = models.ForeignKey(EditorsProfile,on_delete=models.CASCADE,related_name='my_post') 
     image = models.ImageField(upload_to='photos/post_img')
     viwes_of_this = models.IntegerField(blank=True,default=0)
-   
    
     def rating(self):
        now = 0.0
@@ -38,22 +32,17 @@ class Post(models.Model):
     
     
     def short_descriptions(self):
-       
         if len(self.description) > 50:
             return f"{str(self.description)[:50]}..."
         else:
             return f"{str(self.description)}"
         
-    
     def __lt__(self, others): 
         my_rate = self.rating()
         other_rate = others.rating()
         return my_rate <= other_rate
     
        
-
-
- 
 RATING= (
     (0, '0 out of 4'),
     (1, '1 out of 4'),
@@ -71,13 +60,6 @@ class Rating(models.Model):
     edited_at = models.DateTimeField(auto_now = True)
     rating = models.IntegerField(choices=RATING) 
 
-
     class Meta:
         unique_together = (('post', 'user'),)
-
-
-
-
-
-
-    
+  

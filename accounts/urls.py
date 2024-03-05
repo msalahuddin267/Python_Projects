@@ -27,8 +27,5 @@ urlpatterns = [
      path('apply_as_editors/', apply_as_editors,name='apply_as_editors'),
      path('Logout/', Logout,name='Logout'),
      path('edotor_profile/', edotor_profile,name='edotor_profile'),
-     path('all_of_a_editor/', all_of_a_editor,name='all_of_a_editor'),
-   
+     path('all_of_a_editor/', all_of_a_editor,name='all_of_a_editor'), 
 ]
-
-

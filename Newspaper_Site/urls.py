@@ -18,23 +18,16 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
-
 from .views import home,news_for_a_category
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home,name='home'),
     path('news_for_a_category/<int:pk>/', news_for_a_category,name='news_for_a_category'),
-
-
-
     path('accounts/', include('accounts.urls')),
     path('posts/', include('posts.urls')),
    
 ]
 
-
-
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

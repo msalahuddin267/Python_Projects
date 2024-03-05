@@ -3,19 +3,13 @@ from django.contrib import admin
 from django.db.models.query import QuerySet
 from django.http import HttpRequest
 from .models import ApplicationsForEditors,EditorsProfile,Editors
+
 # Register your models here.
 
-
-
-
 class ApplicationsForEditorsAdmin(admin.ModelAdmin):
-    # def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
-    #    queryset = super().get_queryset(request)
-    #    return queryset.filter(aproved=False)
     list_display=['user','aproved']
 
-    def save_model(self, request, obj, form, change):
-        
+    def save_model(self, request, obj, form, change):  
         if form.cleaned_data['aproved']:
             user = obj.user
             EditorsProfile.objects.create(
@@ -30,20 +24,15 @@ class ApplicationsForEditorsAdmin(admin.ModelAdmin):
                city=obj.city,
                zip_code=obj.zip_code,
                country=obj. country,
-
             )
             Editors.objects.create(user_name=user.username)
-
         super().save_model(request, obj, form, change)
+        
 admin.site.register(ApplicationsForEditors,ApplicationsForEditorsAdmin)
-
-
 
 class EditorsProfileAdmin(admin.ModelAdmin):
     list_display=['first_name','last_name','is_active']
 admin.site.register(EditorsProfile,EditorsProfileAdmin)
-
-
 
 class EditorsAdmin(admin.ModelAdmin):
     list_display=['user_name']

@@ -29,4 +29,3 @@ urlpatterns = [
     path('delete_a_post/<int:pk>/',delete_a_post, name='delete_a_post'),
     path('update_a_post/<int:pk>/',update_a_post, name='update_a_post'),
 ]
-

@@ -1,13 +1,7 @@
 {% extends "base.html" %}
-{% block title %}Your Website Title{% endblock %}
-
-
+{% block title %}Title{% endblock %}
 
 {% block content %}
-
-
-
-
 
 <div class="col">
     <div class="card">
@@ -26,15 +20,10 @@
     </div>
 </div>
 
-
 </br>
 </br>
-
 
 <h4 class="card-text" style="margin: auto;">Related news for this categrory </h4>
-
-
-
 
 </br>
 </br>
@@ -49,10 +38,7 @@
 </br>
 </br>
 
-
 <h4 class="card-text" style="margin: auto;">total {{ all_rating_for_this_news|length }} user rating for this post </h4>
-
-
 
 </br>
 </br>
@@ -62,10 +48,8 @@
     <div class="user font-weight-bold">User: {{single_rating.user.first_name}}  {{single_rating.user.last_name}} </div>
     <div class="date text-muted">Date: {{single_rating.created_at}} </div>
     <div class="rating font-weight-bold text-success">Rating: {{single_rating.rating}}out of 4</div>
-    <div class="description mt-3">
-       
+    <div class="description mt-3">  
         {{single_rating.descriptions}}
-
     </div>
 </div>
 

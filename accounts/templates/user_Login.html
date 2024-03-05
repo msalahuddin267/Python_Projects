@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Your Website Title{% endblock %}
-
-
+{% block title %}Title{% endblock %}
 
 {% block content %}
    
@@ -25,9 +23,7 @@
       <button type="submit" class="btn btn-primary btn-block">Log In</button>
     </form>
   </div>
-
 </br>
-
   <p>if you do not have a accout then  <a href="{% url 'singup' %}"> singup</a>   </p>
 
-        {% endblock %}
+{% endblock %}

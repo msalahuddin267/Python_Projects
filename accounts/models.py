@@ -1,16 +1,8 @@
-
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.db import models
 
 # Create your models here.
-
-   
-# will use built in user model for subscribers/viewers
-
-# information of editors
-
-from django.db import models
 
 GENDER = (
     (1, 'MALE'),
@@ -25,7 +17,6 @@ class ApplicationsForEditors(models.Model):
     phone_number = models.CharField(max_length=17)
     n_id = models.CharField(max_length=17)
     gender = models.IntegerField(choices=GENDER) 
-
     email = models.EmailField()
     educations = models.CharField(max_length=50)
     zip_code = models.CharField(max_length=6)
@@ -42,9 +33,6 @@ class ApplicationsForEditors(models.Model):
         return f"{self.user.first_name} {self.user.last_name}"
 
 
-
-
-
 class EditorsProfile(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -52,7 +40,6 @@ class EditorsProfile(models.Model):
     phone_number = models.CharField(max_length=17)
     n_id = models.CharField(max_length=17)
     gender = models.IntegerField(choices=GENDER)  
-
     educations = models.CharField(max_length=50)
     zip_code = models.CharField(max_length=6)
     city = models.CharField(max_length=50)
@@ -60,13 +47,8 @@ class EditorsProfile(models.Model):
     country = models.CharField(max_length=50)
     ragistraions_date = models.DateTimeField(auto_now_add=True)
     profile_update_date = models.DateTimeField(auto_now=True)
-
     is_active = models.BooleanField(default=True)
-    
     tota_posts = models.IntegerField(default=0)
-    # average_rating = models.FloatField(default=0.0)
-
-
 
     def total_views_coutnt_for_thid_editor(self):
         all_Post = self.my_post.all()
@@ -74,7 +56,6 @@ class EditorsProfile(models.Model):
         for i in all_Post:now+=i.viwes_of_this
         return now
     
-
     def ave_rating(self):
         all_Post = self.my_post.all()
         n =  all_Post.count()
@@ -85,15 +66,9 @@ class EditorsProfile(models.Model):
            return  round(ave, 1) 
         else :return 0.0
 
-
-
-    def __str__(self):return f"{self.first_name} {self.last_name}"
-
-
-
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
 
 
 class Editors(models.Model):
     user_name = models.CharField(max_length=50)
-
-

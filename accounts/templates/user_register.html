@@ -1,20 +1,13 @@
 {% extends "base.html" %}
-{% block title %}Your Website Title{% endblock %}
+{% block title %}Title{% endblock %}
 
-
-
-{% block content %}
-   
+{% block content %} 
 {% load crispy_forms_tags %}
-
 
 <form method="post">
     {% csrf_token %}
-
    {{form|crispy}}
-
     <input   class="btn btn-primary" type="submit" value="submit">
   </form>
-
-
-        {% endblock %}
+  
+{% endblock %}
